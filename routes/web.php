@@ -13,6 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderProductController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\WardController;
+use App\Http\Controllers\StateController;
 
 use App\Http\Middleware\AdminLogin;
 
@@ -83,3 +84,6 @@ Route::group(['middleware' => 'is_admin_login'], function() {
  */
 Route::get('get_districts/', [DistrictController::class, 'districtsByCity']);
 Route::get('get_wards/', [DistrictController::class, 'wardsByDistrict']);
+
+Route::get('get_cities/', [StateController::class, 'getcityState']);
+Route::get('get_zips/', [StateController::class, 'getZip']);

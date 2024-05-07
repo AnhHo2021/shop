@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\City;
+use App\Models\State;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -102,7 +103,7 @@ class RegisterController extends Controller
           $data['password'] = Hash::make($data['password']);
            $user = User::create($data);
           // $user = DB::table('users')->insert($data);
-          //print_r($data); die();
+
           Auth::login($user);
           if(Auth::check()){
               return redirect('/');
@@ -115,8 +116,9 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $data = City::select('cities.*')->get();
-        return view('auth.register',['cities' => $data]);
+        $data = State::select('code','state')->get();
+       // print_r($data); die();
+        return view('auth.register',['states' => $data]);
     }
 
 }

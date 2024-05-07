@@ -69,14 +69,22 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
+            $check_forward = $request->input('check-forward');
+            if(isset($check_forward)){
+                if($check_forward==1){
+                    if(Auth::user()->role){
+                        return redirect()->intended('admin/product-list');
+                    }else{
+                        return back();
+                    }
+                }
+            }
             return back();
+
             //print_r(Auth::user()->role); die();
             /*
-            if(Auth::user()->role){
-                return redirect()->intended('product-list');
-            }else{
-                return back();
-            }*/
+            */
         }
 
         return back()->withErrors([
