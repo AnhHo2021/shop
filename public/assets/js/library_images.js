@@ -86,20 +86,7 @@ library_images.prototype = {
                 if(res.files.length > 0){
                     var rows =''
                     var cols =''
-                    res.files.forEach(function(item){
-                        //console.log(item)
-                       // var img1 = api_link+item
-                        cols +='<div class="col mx-1 my-2 d-flex flex-column">' +
-                            // ' <img src="/images/'+item.filenames+'" img_name="'+item.filenames+'" style="width:60px; cursor:pointer" class="img-selected">' +
-                            ' <img src="/images/'+item+'" img_name="'+item+'" style="width:60px; cursor:pointer" class="img-selected">' +
-                            '<span class="mt-1">'+item+'</span>'+
-                            '</div>'
 
-                    })
-
-                    rows +='<div class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-6 append-img">' +
-                        cols +
-                        '</div>'
                 }
                 $('#library-modal #media').html(rows)
                 //event

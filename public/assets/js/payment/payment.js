@@ -203,53 +203,14 @@ payment.prototype = {
             method:method
         }
         var link3 =api_link+'checkout/payment/';
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            "async": true,
-            "crossDomain": true,
-            "url": link3,
-            "method": "POST",
-            dataType: 'json',
-            data:data,
-            //contentType: 'application/json',
-            success: function (res) {
-               if(res.error !=undefined){
-                   $('#form-payment').addClass('was-validated')
-               }else{
-                   $('#form-payment').removeClass('was-validated')
-                   localStorage.setItem('yourCart','');
-                   localStorage.setItem('discount_code','');
-                   localStorage.setItem('discount_value',0);
-                   document.location.href = api_link+'order/'+res.order_id
-               }
-            },
-            error : function (status,res,error) { }
 
-        });
     },
     /*
      payment
      */
     getOrder:function(order_id){
         var link3 =api_link+'checkout/order/';
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            "async": true,
-            "crossDomain": true,
-            "url": link3,
-            "method": "get",
-            dataType: 'json',
-            data:{order_id:order_id},
-            //contentType: 'application/json',
-            success: function (res) {
-            },
-            error : function (status,res,error) { }
 
-        });
     }
 }
 
